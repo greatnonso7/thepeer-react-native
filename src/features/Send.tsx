@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { createUrl, isRequired } from '../utils';
-import type { SendProps } from '../@types';
+import type { GeneralProps, SendProps } from '../@types';
 import FeaturesWrapper from '../components/FeaturesWrapper';
 import { WebView } from 'react-native-webview';
-import { SEND_CLOSE, SEND_ERROR, SEND_SUCCESS } from '../constants';
+import {
+  SEND_CLOSE,
+  SEND_INSUFFICIENT_FUNDS,
+  SEND_USER_INSUFFICIENT_FUNDS,
+  SEND_SUCCESS,
+} from '../constants';
 import Loader from '../components/Loader';
 import ErrorFallback from '../components/Error';
 
-const Send = (props: SendProps) => {
+const Send = (props: GeneralProps & SendProps) => {
   const [sourceUrl, setSourceUrl] = useState<string>('');
   const {
     amount,
     meta,
     userReference,
     publicKey,
-    receiptUrl,
     onClose,
     onSuccess,
     onError,
     openSendSDK,
+    currency,
   } = props;
   useEffect(() => {
     const checkProps = () => {
@@ -26,13 +31,12 @@ const Send = (props: SendProps) => {
         amount &&
         !isNaN(+amount) &&
         typeof +amount === 'number' &&
-        +amount >= 100;
+        +amount >= 10000;
 
       let validProps =
         validAmount &&
         !!userReference &&
         !!publicKey &&
-        !!receiptUrl &&
         onClose !== undefined &&
         onSuccess !== undefined &&
         onError !== undefined;
@@ -48,20 +52,18 @@ const Send = (props: SendProps) => {
           amount,
           userReference,
           publicKey,
-          receiptUrl,
           sdkType: 'send',
           meta,
+          currency,
         };
         setSourceUrl(createUrl(configs));
       } else {
         console.error(
           "cannot initialize SDK, ensure you're passing all the required props"
         );
-        !validAmount &&
-          console.error('Enter a valid amount, not less than 100 kobo');
+        !validAmount && console.error('amount cannot be less than 100 NGN');
         isRequired('userReference', !!userReference);
         isRequired('publicKey', !!publicKey);
-        isRequired('receiptUrl', !!receiptUrl);
         isRequired('onClose callback', onClose !== undefined);
         isRequired('onError callback', onError !== undefined);
         isRequired('onSuccess callback', onSuccess !== undefined);
@@ -79,7 +81,7 @@ const Send = (props: SendProps) => {
     meta,
     userReference,
     publicKey,
-    receiptUrl,
+    currency,
     onClose,
     onSuccess,
     onError,
@@ -94,9 +96,9 @@ const Send = (props: SendProps) => {
         break;
       case SEND_SUCCESS:
         onSuccess(response);
-        onClose();
         break;
-      case SEND_ERROR:
+      case SEND_INSUFFICIENT_FUNDS:
+      case SEND_USER_INSUFFICIENT_FUNDS:
         onError(response);
         break;
     }
