@@ -10,8 +10,11 @@ import {
 const Loader = () => {
   return (
     <View style={styles.wrapper}>
-      <TouchableOpacity>
-        <Image source={require('../assets/close.png')} />
+      <TouchableOpacity style={styles.closeContainer}>
+        <Image
+          source={require('../assets/close.png')}
+          style={styles.closeIcon}
+        />
       </TouchableOpacity>
       <ActivityIndicator size="small" color="#0066FF" />
     </View>
@@ -25,6 +28,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     height: '100%',
+  },
+  closeContainer: {
+    width: 60,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'flex-end',
+  },
+  closeIcon: {
+    width: 40,
+    height: 40,
   },
 });
 
