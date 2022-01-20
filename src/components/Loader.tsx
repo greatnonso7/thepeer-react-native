@@ -1,9 +1,18 @@
 import React from 'react';
-import { ActivityIndicator, View, StyleSheet } from 'react-native';
+import {
+  ActivityIndicator,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 
 const Loader = () => {
   return (
     <View style={styles.wrapper}>
+      <TouchableOpacity>
+        <Image source={require('../assets/close.png')} />
+      </TouchableOpacity>
       <ActivityIndicator size="small" color="#0066FF" />
     </View>
   );
