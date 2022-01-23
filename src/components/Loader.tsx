@@ -38,21 +38,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
-    height: '100%',
+    height: '95%',
   },
   closeContainer: {
     width: 60,
     height: 60,
     position: 'absolute',
-    top: 40,
+    top: 30,
     right: 20,
     justifyContent: 'center',
     alignItems: 'center',
     // alignSelf: 'flex-end',
   },
   closeIcon: {
-    width: 30,
-    height: 30,
+    width: 35,
+    height: 35,
   },
 });
 
