@@ -44,15 +44,15 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     position: 'absolute',
-    top: 50,
+    top: 40,
     right: 20,
     justifyContent: 'center',
     alignItems: 'center',
     // alignSelf: 'flex-end',
   },
   closeIcon: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
   },
 });
 
