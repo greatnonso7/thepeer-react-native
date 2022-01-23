@@ -115,7 +115,9 @@ const Checkout = (props: GeneralProps & CheckoutProps) => {
         source={{ uri: sourceUrl }}
         onMessage={handleMessage}
         startInLoadingState={true}
-        renderLoading={() => <Loader />}
+        renderLoading={() => (
+          <Loader visible={openCheckoutSDK} onRequestClose={onClose} />
+        )}
         renderError={(error) => <ErrorFallback {...{ onClose, error }} />}
       />
     </FeaturesWrapper>

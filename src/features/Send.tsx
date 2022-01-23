@@ -110,7 +110,9 @@ const Send = (props: GeneralProps & SendProps) => {
         source={{ uri: sourceUrl }}
         onMessage={handleMessage}
         startInLoadingState={true}
-        renderLoading={() => <Loader />}
+        renderLoading={() => (
+          <Loader visible={openSendSDK} onRequestClose={onClose} />
+        )}
         renderError={(error) => <ErrorFallback {...{ onClose, error }} />}
       />
     </FeaturesWrapper>

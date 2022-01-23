@@ -5,19 +5,31 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  Modal,
 } from 'react-native';
 
-const Loader = () => {
+import type { FeaturesWrapperProps } from '../@types';
+
+const Loader = ({ onRequestClose, visible }: FeaturesWrapperProps) => {
   return (
-    <View style={styles.wrapper}>
-      <TouchableOpacity style={styles.closeContainer}>
-        <Image
-          source={require('../assets/close.png')}
-          style={styles.closeIcon}
-        />
-      </TouchableOpacity>
-      <ActivityIndicator size="small" color="#0066FF" />
-    </View>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      {...{ visible, onRequestClose }}
+    >
+      <View style={styles.wrapper}>
+        <TouchableOpacity
+          onPress={onRequestClose}
+          style={styles.closeContainer}
+        >
+          <Image
+            source={require('../assets/close.png')}
+            style={styles.closeIcon}
+          />
+        </TouchableOpacity>
+        <ActivityIndicator size="small" color="#0066FF" />
+      </View>
+    </Modal>
   );
 };
 

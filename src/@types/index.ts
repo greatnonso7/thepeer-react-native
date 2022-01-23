@@ -1,7 +1,7 @@
 export interface FeaturesWrapperProps {
-  visible: boolean;
-  onRequestClose: () => void;
-  children: any;
+  visible?: boolean;
+  onRequestClose?: () => void;
+  children?: any;
 }
 
 export interface MetaProps {

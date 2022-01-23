@@ -119,7 +119,9 @@ const DirectDebit = (props: GeneralProps & DirectDebitProps) => {
         source={{ uri: sourceUrl }}
         onMessage={handleMessage}
         startInLoadingState={true}
-        renderLoading={() => <Loader />}
+        renderLoading={() => (
+          <Loader visible={openDirectChargeSDK} onRequestClose={onClose} />
+        )}
         renderError={(error) => <ErrorFallback {...{ onClose, error }} />}
       />
     </FeaturesWrapper>
