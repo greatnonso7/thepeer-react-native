@@ -16,6 +16,7 @@ const Loader = ({ onRequestClose, visible }: FeaturesWrapperProps) => {
       animationType="slide"
       transparent={true}
       {...{ visible, onRequestClose }}
+      style={styles.wrapper}
     >
       {/* <View style={styles.wrapper}> */}
       <TouchableOpacity onPress={onRequestClose} style={styles.closeContainer}>
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     position: 'absolute',
-    top: 20,
+    top: 50,
     right: 30,
     justifyContent: 'center',
     alignItems: 'center',
