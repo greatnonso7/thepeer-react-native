@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     height: '95%',
   },
   closeContainer: {
-    width: 60,
-    height: 60,
+    width: 40,
+    height: 40,
     position: 'absolute',
     top: 20,
     right: 20,
