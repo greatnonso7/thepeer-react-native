@@ -6,10 +6,13 @@ import {
   TouchableOpacity,
   Image,
   // Modal,
+  Dimensions,
   View,
 } from 'react-native';
 
 import type { FeaturesWrapperProps } from '../@types';
+
+const { height } = Dimensions.get('screen');
 
 const Loader = ({ onRequestClose }: FeaturesWrapperProps) => {
   return (
@@ -26,7 +29,11 @@ const Loader = ({ onRequestClose }: FeaturesWrapperProps) => {
           style={styles.closeIcon}
         />
       </TouchableOpacity>
-      <ActivityIndicator size="small" color="#0066FF" />
+      <ActivityIndicator
+        style={styles.activityIndicator}
+        size="small"
+        color="#0066FF"
+      />
     </View>
     // {/* </Modal> */ }
   );
@@ -52,6 +59,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'flex-end',
     alignSelf: 'flex-end',
+  },
+  activityIndicator: {
+    paddingVertical: height / 2,
   },
   closeIcon: {
     width: 35,
