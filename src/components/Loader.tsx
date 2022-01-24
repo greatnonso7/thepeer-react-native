@@ -34,11 +34,17 @@ const Loader = ({ onRequestClose }: FeaturesWrapperProps) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    display: 'flex',
-    justifyContent: 'center',
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // backgroundColor: 'white',
+    // height: '95%',
+    flex: 1,
+    backgroundColor: '#ffffff',
+    height: '100%',
+    width: '100%',
     alignItems: 'center',
-    backgroundColor: 'white',
-    height: '95%',
+    position: 'absolute',
   },
   closeContainer: {
     padding: 20,
