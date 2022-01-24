@@ -41,14 +41,11 @@ const styles = StyleSheet.create({
     height: '95%',
   },
   closeContainer: {
-    width: 40,
-    height: 40,
+    padding: 20,
+    marginRight: -20,
     position: 'absolute',
-    top: 20,
-    right: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // alignSelf: 'flex-end',
+    alignItems: 'flex-end',
+    alignSelf: 'flex-end',
   },
   closeIcon: {
     width: 35,
